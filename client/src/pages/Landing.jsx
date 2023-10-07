@@ -25,7 +25,11 @@ export const Landing = () => {
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
-
+  document.querySelector("img.arrow").addEventListener("click", () => {
+    window.scrollTo({
+      top: 315,
+      behavior: "smooth"});
+  });
   return (
     
     <div className="index">
@@ -44,7 +48,19 @@ export const Landing = () => {
           <motion.div layout className="project-name-child" style={ {fontSize: scrollYProgress}}/>
           HackRU Goated Project
           </motion.div>
-        <img
+        <motion.img
+          animate={{
+            translateY: [0, 10, 0]
+          }}
+          whileHover={{
+            scale: 1.2
+          }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 0.3,
+            repeatDelay: 1
+          }}
           className="arrow"
           alt="Arrow"
           src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
