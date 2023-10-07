@@ -1,6 +1,5 @@
 import "./css/style.css";
 import { Route, Routes } from "react-router-dom";
-import { AuthGuard } from "./components/AuthGuard";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Landing } from "./pages/Landing.jsx";
 

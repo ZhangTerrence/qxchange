@@ -27,4 +27,33 @@
     right: 50%;
     left: 48%;
   }
-  
+
+.subjects-body {
+  background-color: #1e1e1e;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.subject-container {
+  background-color: #0d0d15;
+  width: 90%;
+  margin: 1rem;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.5rem;
+}
+
