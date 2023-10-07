@@ -26,6 +26,7 @@
     bottom: 10%;
     right: 50%;
     left: 48%;
+    z-index: 1000;
   }
 
 .subjects-body {
@@ -33,6 +34,8 @@
   font-family: "JetBrains Mono", monospace;
   color: #ffffff;
   text-align: center;
+  position: absolute;
+  inset: 35% 0 0 0;
 }
 
 .row {
