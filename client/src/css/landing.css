@@ -1,16 +1,10 @@
 .index {
     background-color: #181822;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .index .div {
-    background-color: #181822;
-    height: 100vh;
+    font-family: "JetBrains Mono", Helvetica;
     position: relative;
     width: 100vw;
+    height: 100vh;
+    align-items: center;
   }
   
 
@@ -38,22 +32,20 @@
     padding-right: 0.5rem;
   }
   
-  .text-wrapper-3 {
+  .project-name {
     color: #ffffff;
-    font-family: "JetBrains Mono", Helvetica;
     font-size: 85px;
     font-weight: 400;
-    left: 174px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
-    top: 330px;
-    width: 1092px;
+    width: fit-content;
+    position:fixed;
+    top: 40%;
+    right: 15%;
   }
   
   .arrow {
     height: 45px;
-    left: 679px;
     position: fixed;
     bottom: 10%;
     right: 50%;
