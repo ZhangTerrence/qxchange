@@ -33,6 +33,7 @@
   }
   
   .project-name {
+    overflow: hidden;
     color: #ffffff;
     font-weight: 400;
     font-size: 85px;

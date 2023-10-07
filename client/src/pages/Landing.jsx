@@ -23,22 +23,24 @@ export const Landing = () => {
   // })
 
   var { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.25]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
+  const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
 
   return (
     
     <div className="index">
         <Navbar/>
         <motion.div layoutScroll className="project-name" 
-        animate={{
-          rotate: 180
-        }}
-        transition={{
-          repeat: 1,
-          repeatType: "mirror",
-          duration: 2
-        }}
-        style={{scale, overflow: "scroll"}}>
+        // animate={{
+        //   rotate: 180
+        // }}
+        // transition={{
+        //   repeat: 1,
+        //   repeatType: "mirror",
+        //   duration: 2,
+        //   type: "keyframes"
+        // }}
+        style={{scale, translateY: pos}}>
           <motion.div layout className="project-name-child" style={ {fontSize: scrollYProgress}}/>
           HackRU Goated Project
           </motion.div>
