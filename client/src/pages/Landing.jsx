@@ -25,11 +25,14 @@ export const Landing = () => {
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
-  document.querySelector("img.arrow").addEventListener("click", () => {
-    window.scrollTo({
-      top: 315,
-      behavior: "smooth"});
-  });
+  function attach() {
+    document.querySelector("img.arrow").addEventListener("click", () => {
+      window.scrollTo({
+        top: 315,
+        behavior: "smooth"});
+    });
+  }
+ 
   return (
     
     <div className="index">
@@ -63,6 +66,7 @@ export const Landing = () => {
           }}
           className="arrow"
           alt="Arrow"
+          onLoad={attach}
           src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
         />
     </div>
