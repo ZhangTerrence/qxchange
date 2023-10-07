@@ -1,10 +1,18 @@
 const { subjectModel, postModel } = require("../models/subjectModel");
 
+const getPost = async (req, res) => {
+  const { id } = req.params;
+
+  const post = await postModel.findOne({ _id: id });
+
+  return res.status(200).json({ post });
+};
+
 const getPosts = async (req, res) => {
   const { subject } = req.body;
 
   if (!subject) {
-    res.status(400).json({ error: "Input subject type." });
+    res.status(400).json({ error: "Subject type is required." });
     return;
   }
 
@@ -37,6 +45,7 @@ const createPost = async (req, res) => {
 };
 
 module.exports = {
+  getPost,
   getPosts,
   createPost,
 };
