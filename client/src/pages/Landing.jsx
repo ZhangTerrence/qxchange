@@ -1,6 +1,7 @@
 import { Navbar } from "../components/Navbar.jsx";
 import { motion, useScroll, useTransform, useAnimationControls} from "framer-motion";
 import "../css/landing.css";
+import { AuthButton } from "../components/AuthButton.jsx";
 
 export const Landing = () => {
   // var fontString = document.querySelector("div.project-name").style.fontSize;
@@ -38,7 +39,8 @@ export const Landing = () => {
     document.querySelector("img.arrow").addEventListener("click", () => {
       window.scrollTo({
         top: 315,
-        behavior: "smooth"});
+        behavior: "smooth",
+      });
     });
   }
  
@@ -75,28 +77,32 @@ export const Landing = () => {
         //   type: "keyframes"
         // }}
 
-        style={{scale, translateY: pos}}>
-          <motion.div layout className="project-name-child" style={ {fontSize: scrollYProgress}}/>
-          HackRU Goated Project
-          </motion.div>
-        <motion.img
-          animate={{
-            translateY: [0, 10, 0]
-          }}
-          whileHover={{
-            scale: 1.2
-          }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "mirror",
-            duration: 0.3,
-            repeatDelay: 1
-          }}
-          className="arrow"
-          alt="Arrow"
-          onLoad={attach}
-          src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
-
+        style={{ scale, translateY: pos }}
+      >
+        <motion.div
+          layout
+          className="project-name-child"
+          style={{ fontSize: scrollYProgress }}
+        />
+        HackRU Goated Project
+      </motion.div>
+      <motion.img
+        animate={{
+          translateY: [0, 10, 0],
+        }}
+        whileHover={{
+          scale: 1.2,
+        }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "mirror",
+          duration: 0.3,
+          repeatDelay: 1,
+        }}
+        className="arrow"
+        alt="Arrow"
+        onLoad={attach}
+        src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
       />
     <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
             <h1>Choose your subject:</h1>
