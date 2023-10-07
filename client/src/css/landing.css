@@ -1,0 +1,74 @@
+.index {
+    background-color: #181822;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .index .div {
+    background-color: #181822;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .index .overlap-group {
+    background-color: #0d0d15;
+    height: 71px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+  .index .text-wrapper {
+    color: #ffffff;
+    font-family: "JetBrains Mono", Helvetica;
+    font-size: 25px;
+    font-weight: 500;
+    left: 1222px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 19px;
+    white-space: nowrap;
+    width: 187px;
+  }
+  
+  .index .text-wrapper-2 {
+    color: #ffffff;
+    font-family: "JetBrains Mono", Helvetica;
+    font-size: 25px;
+    font-weight: 500;
+    left: 38px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 22px;
+    white-space: nowrap;
+    width: 187px;
+  }
+  
+  .index .text-wrapper-3 {
+    color: #ffffff;
+    font-family: "JetBrains Mono", Helvetica;
+    font-size: 85px;
+    font-weight: 400;
+    left: 174px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 330px;
+    width: 1092px;
+  }
+  
+  .index .arrow {
+    height: 95px;
+    left: 679px;
+    position: absolute;
+    top: 810px;
+    width: 81px;
+  }
+  
