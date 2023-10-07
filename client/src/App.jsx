@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/dashboard" element={<AuthGuard component={Dashboard} />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };
