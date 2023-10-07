@@ -1,7 +1,6 @@
-import { AuthButton } from "../components/AuthButton";
-import "../css/landing.css";
 import { Navbar } from "../components/Navbar.jsx";
-import {motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import "../css/landing.css";
 
 export const Landing = () => {
   // var fontString = document.querySelector("div.project-name").style.fontSize;
@@ -25,6 +24,7 @@ export const Landing = () => {
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
+
   function attach() {
     document.querySelector("img.arrow").addEventListener("click", () => {
       window.scrollTo({
@@ -34,10 +34,11 @@ export const Landing = () => {
   }
  
   return (
-    
     <div className="index">
-        <Navbar/>
-        <motion.div layoutScroll className="project-name" 
+      <Navbar />
+      <motion.div
+        layoutScroll
+        className="project-name"
         // animate={{
         //   rotate: 180
         // }}
@@ -47,6 +48,7 @@ export const Landing = () => {
         //   duration: 2,
         //   type: "keyframes"
         // }}
+
         style={{scale, translateY: pos}}>
           <motion.div layout className="project-name-child" style={ {fontSize: scrollYProgress}}/>
           HackRU Goated Project
@@ -68,7 +70,8 @@ export const Landing = () => {
           alt="Arrow"
           onLoad={attach}
           src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
-        />
+
+      />
     </div>
   );
 };
