@@ -1,7 +1,6 @@
 import { Navbar } from "../components/Navbar.jsx";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "../css/landing.css";
-import { AuthButton } from "../components/AuthButton.jsx";
 
 export const Landing = () => {
   // var fontString = document.querySelector("div.project-name").style.fontSize;
