@@ -1,5 +1,5 @@
 import { Navbar } from "../components/Navbar.jsx";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useAnimationControls} from "framer-motion";
 import "../css/landing.css";
 
 export const Landing = () => {
@@ -24,6 +24,7 @@ export const Landing = () => {
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
+  const fadeControls = useAnimationControls();
 
   // useEffect(() => {
   //   async function fetchApi() {
@@ -41,6 +42,23 @@ export const Landing = () => {
     });
   }
  
+  document.addEventListener("scroll", () => {
+    console.log(scrollYProgress.current)
+    if(scrollYProgress.current >= 0.4) {
+      fadeControls.start({
+       opacity: 1,
+        transition: { duration: 0.3 },
+      })
+      document.querySelector("img.arrow").style.opacity = 0;
+    } else {
+      document.querySelector("img.arrow").style.opacity = 1;
+      fadeControls.start({
+        opacity: 0,
+        transition: { duration: 0.3 },
+      })
+    }
+  })
+
   return (
     <div className="index">
       <Navbar />
@@ -80,22 +98,22 @@ export const Landing = () => {
           src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
 
       />
-      <div className=".subjects-body">
-        <h1>Choose your subject:</h1>
-        <div className="row">
-          <div className="column">
-            <div className="subject-container">Math</div>
-            <div className="subject-container">English</div>
-            <div className="subject-container">Chemistry</div>
-            <div className="subject-container">History</div>
-          </div>
-          <div className="column">
-            <div className="subject-container">Biology</div>
-            <div className="subject-container">Physics</div>
-            <div className="subject-container">Foreign Languages</div>
-          </div>
-        </div>
-      </div>
+    <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
+            <h1>Choose your subject:</h1>
+            <div className="row">
+              <div className="column">
+                <div className="subject-container">Math</div>
+                <div className="subject-container">English</div>
+                <div className="subject-container">Chemistry</div>
+                <div className="subject-container">History</div>
+              </div>
+              <div className="column">
+                <div className="subject-container">Biology</div>
+                <div className="subject-container">Physics</div>
+                <div className="subject-container">Foreign Languages</div>
+              </div>
+            </div>
+          </motion.div>
     </div>
   );
 };
