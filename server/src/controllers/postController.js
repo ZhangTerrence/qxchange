@@ -9,14 +9,7 @@ const getPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
-  const { subject } = req.body;
-
-  if (!subject) {
-    res.status(400).json({ error: "Subject type is required." });
-    return;
-  }
-
-  const posts = await postModel.find({ subject }).sort({ createdAt: 1 });
+  const posts = await postModel.find({}).sort({ createdAt: 1 });
 
   return res.status(200).json({ posts });
 };

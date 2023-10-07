@@ -6,7 +6,7 @@ export const AuthButton = () => {
   const handeLogin = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/dashboard",
+        returnTo: "/",
       },
     });
   };

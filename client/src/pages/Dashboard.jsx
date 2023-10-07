@@ -2,6 +2,7 @@ import "../css/Dashboard.css";
 import { useState, useEffect } from "react";
 import { Post } from "../components/Post.jsx";
 import Service from "../services/post";
+import { LogoutButton } from "../components/LogoutButton";
 import { Leaderboard } from "../components/Leaderboard";
 
 export const Dashboard = () => {
@@ -9,7 +10,8 @@ export const Dashboard = () => {
 
   useEffect(() => {
     Service.getAll().then((initialPosts) => {
-      setPosts(initialPosts);
+      console.log(initialPosts);
+      setPosts(initialPosts.posts);
     });
   }, []);
 
@@ -19,6 +21,7 @@ export const Dashboard = () => {
 
   return (
     <div>
+      <LogoutButton />
       <section className="dashboard-body">
         {/* nav component goes here */}
         <div className="dashboard-container">
