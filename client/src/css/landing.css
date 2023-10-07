@@ -8,50 +8,37 @@
   
   .index .div {
     background-color: #181822;
-    height: 1024px;
+    height: 100vh;
     position: relative;
-    width: 1440px;
+    width: 100vw;
   }
   
-  .index .overlap-group {
+
+  .overlap-group {
     background-color: #0d0d15;
-    height: 71px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
   }
   
-  .index .text-wrapper {
+  
+.text-wrapper {
     color: #ffffff;
     font-family: "JetBrains Mono", Helvetica;
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: 500;
-    left: 1222px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
-    text-align: right;
-    top: 19px;
     white-space: nowrap;
-    width: 187px;
+    text-align: center;
+    height: fit-content;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   
-  .index .text-wrapper-2 {
-    color: #ffffff;
-    font-family: "JetBrains Mono", Helvetica;
-    font-size: 25px;
-    font-weight: 500;
-    left: 38px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 22px;
-    white-space: nowrap;
-    width: 187px;
-  }
-  
-  .index .text-wrapper-3 {
+  .text-wrapper-3 {
     color: #ffffff;
     font-family: "JetBrains Mono", Helvetica;
     font-size: 85px;
@@ -64,11 +51,12 @@
     width: 1092px;
   }
   
-  .index .arrow {
-    height: 95px;
+  .arrow {
+    height: 45px;
     left: 679px;
-    position: absolute;
-    top: 810px;
-    width: 81px;
+    position: fixed;
+    bottom: 10%;
+    right: 50%;
+    left: 50%;
   }
   

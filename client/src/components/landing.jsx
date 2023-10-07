@@ -6,8 +6,8 @@ const Landing = () => {
     <div className="index">
       <div className="div">
         <div className="overlap-group">
+        <div className="text-wrapper">(forum name)</div>
           <div className="text-wrapper">Your Name</div>
-          <div className="text-wrapper-2">(forum name)</div>
         </div>
         <div className="text-wrapper-3">HackRU Goated Project</div>
         <img
