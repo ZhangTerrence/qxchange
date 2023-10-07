@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
@@ -26,7 +27,6 @@ export const AuthProvider = ({ children }) => {
         audience: authAudience,
       }}
       onRedirectCallback={onRedirectCallback}
-      useRefreshTokens={true}
     >
       {children}
     </Auth0Provider>
