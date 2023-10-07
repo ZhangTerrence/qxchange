@@ -1,0 +1,21 @@
+.leader-container {
+    width: 100%;
+    background-color: #0D0D15;
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.leader-name {
+    font-size: 1rem;
+    color: white;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.leader-title {
+    font-size: 1.25rem;
+    color: white;
+    margin-left: 1rem;
+}
