@@ -1,4 +1,4 @@
-import React from "react";
+import { AuthButton } from "../components/AuthButton";
 import "../css/landing.css";
 import { Navbar } from "../components/Navbar.jsx";
 import {motion, useScroll, useTransform } from "framer-motion";
@@ -68,4 +68,3 @@ export const Landing = () => {
     </div>
   );
 };
-
