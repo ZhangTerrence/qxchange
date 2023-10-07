@@ -1,3 +1,4 @@
+
 import '../css/Dashboard.css'
 import {useState, useEffect} from 'react'
 import {Post} from "../components/Post.jsx"
@@ -14,13 +15,12 @@ const [open,setOpen] = useState(false);
 const [newTitle, setNewTitle] = useState("");
 const [newContent, setNewContent] = useState("");
 
-useEffect(() => {
-    Service
-      .getAll()
-      .then(initialPosts => {
-        setPosts(initialPosts);
-      })
-  }, [])
+  useEffect(() => {
+    Service.getAll().then((initialPosts) => {
+      console.log(initialPosts);
+      setPosts(initialPosts.posts);
+    });
+  }, []);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -86,12 +86,14 @@ if (!posts) {
                             }
                         </div>
                     </div>
+</div>
 
-                    <div className="right-container">
-                            <Leaderboard />
-                    </div>
-                </div>
-            </section>
+
+          <div className="right-container">
+            <Leaderboard />
+          </div>
         </div>
-    )
-}
+      </section>
+    </div>
+  );
+};

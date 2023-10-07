@@ -1,8 +1,12 @@
 const express = require("express");
-const { createSubject } = require("../controllers/subjectController");
+const {
+  createSubject,
+  getSubjects,
+} = require("../controllers/subjectController");
 
 const subjectRoutes = express.Router();
 
+subjectRoutes.get("/", getSubjects);
 subjectRoutes.post("/", createSubject);
 
 module.exports = subjectRoutes;
