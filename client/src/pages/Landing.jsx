@@ -24,12 +24,20 @@ export const Landing = () => {
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
-  document.querySelector(".arrow").addEventListener("click", () => {
-    window.scrollTo({
-      top: 315,
-      behavior: "smooth",
-    });
-  });
+  // document.querySelector(".arrow").addEventListener("click", () => {
+  //   window.scrollTo({
+  //     top: 315,
+  //     behavior: "smooth",
+  //   });
+  // });
+
+  // useEffect(() => {
+  //   async function fetchApi() {
+  //     const response = await axios.get("http://localhost:4000/api/subject/");
+  //     console.log(response.data.subjects);
+  //   }
+  //   fetchApi();
+  // }, []);
 
   return (
     <div className="index">
@@ -72,6 +80,22 @@ export const Landing = () => {
         alt="Arrow"
         src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
       />
+      <div className=".subjects-body">
+        <h1>Choose your subject:</h1>
+        <div className="row">
+          <div className="column">
+            <div className="subject-container">Math</div>
+            <div className="subject-container">English</div>
+            <div className="subject-container">Chemistry</div>
+            <div className="subject-container">History</div>
+          </div>
+          <div className="column">
+            <div className="subject-container">Biology</div>
+            <div className="subject-container">Physics</div>
+            <div className="subject-container">Foreign Languages</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

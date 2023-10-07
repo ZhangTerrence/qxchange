@@ -1,30 +1,28 @@
 .post {
-    background-color: #0D0D15;
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  background-color: #0d0d15;
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .post-author {
-    font-size: 0.8rem;
-    color: #414b5a;
-    margin: 0;
-
-
+  font-size: 0.8rem;
+  color: #414b5a;
+  margin: 0;
 }
 
 .post-title {
-    font-size: 1.25rem;
-    color: white;
-    margin: 0.5rem 0rem;
-    font-weight: 600;
-
+  font-size: 1.25rem;
+  color: white;
+  margin: 0.5rem 0rem;
+  font-weight: 600;
 }
 
 .post-content {
-    color: white;
-    font-size: 1rem;
-    font-weight: 300;
-
+  color: white;
+  font-size: 1rem;
+  font-weight: 300;
 }
