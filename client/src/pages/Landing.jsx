@@ -1,14 +1,47 @@
 import React from "react";
 import "../css/landing.css";
+import { Navbar } from "../components/Navbar.jsx";
+import {motion, useScroll, useTransform } from "framer-motion";
 
 export const Landing = () => {
+  // var fontString = document.querySelector("div.project-name").style.fontSize;
+  // let fontS = parseInt(fontString);
+  // var prevScrollPos = 0;
+
+  // document.addEventListener("scroll", (scroll) => {
+  //   // console.log(window.scrollY);
+  //   var fontS = parseInt(document.querySelector("div.project-name").style.fontSize)
+  //   if(window.scrollY > prevScrollPos) {
+  //     fontS = fontS - (window.scrollY - prevScrollPos)/10;
+  //   } else {
+  //     fontS = fontS + (prevScrollPos - window.scrollY)/10;
+  //   }
+  //   document.querySelector("div.project-name").style.fontSize = fontS + "px";
+  //   prevScrollPos = window.scrollY;
+  //   console.log(window.scrollY)
+
+  // })
+
+  var { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.25]);
+
   return (
+    
     <div className="index">
-        <div className="overlap-group">
-        <div className="text-wrapper">(forum name)</div>
-          <div className="text-wrapper">Your Name</div>
-        </div>
-        <div className="project-name">HackRU Goated Project</div>
+        <Navbar/>
+        <motion.div layoutScroll className="project-name" 
+        animate={{
+          rotate: 180
+        }}
+        transition={{
+          repeat: 1,
+          repeatType: "mirror",
+          duration: 2
+        }}
+        style={{scale, overflow: "scroll"}}>
+          <motion.div layout className="project-name-child" style={ {fontSize: scrollYProgress}}/>
+          HackRU Goated Project
+          </motion.div>
         <img
           className="arrow"
           alt="Arrow"
