@@ -1,0 +1,11 @@
+.dropdown-container {
+    position:absolute;
+    top: 8vh;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 0rem;
+    border-radius: 0.25rem;
+}
