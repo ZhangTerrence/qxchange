@@ -1,4 +1,4 @@
-:root {
+#root {
   font-family: "JetBrains Mono", monospace;
   margin: 0;
   padding: 0;
@@ -7,6 +7,7 @@
 
 html,
 body {
+  
   margin: 0;
   padding: 0;
   color: #333;

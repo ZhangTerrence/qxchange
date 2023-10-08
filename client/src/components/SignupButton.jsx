@@ -1,4 +1,4 @@
-import '../css/Button.css'
+import "../css/Navbar.css"
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 
@@ -18,7 +18,7 @@ export const SignupButton = ({buttonName}) => {
   
     
     return (
-        <button className="signup-button" onClick={handleSignUp}>{buttonName}</button>
+        <button className="signup-button" onClick={handleSignUp}>Sign up</button>
     )
 }
 

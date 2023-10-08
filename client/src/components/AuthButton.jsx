@@ -14,7 +14,7 @@ export const AuthButton = () => {
     };
 
     return (
-        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className="login-button" onClick={handleLogin}>Log in</button>
     )
 }
 
