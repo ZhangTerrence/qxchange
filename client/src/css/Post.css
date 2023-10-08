@@ -27,9 +27,18 @@
   color: white;
 }
 
-.post-comments {
-  color: white;
+.comment-wrapper {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+}
+
+.post-comments {
+  color: #6c6c73;
+  font-size: 0.9rem;
+  display: flex;
+  margin-right: 0.5rem;
+  
 }
 
 .comments {
@@ -39,10 +48,11 @@
 }
 
 .comments-border {
-  border-top: 1px solid white;
+  border-top: 1px solid #6c6c73;
   width: 100%;
   margin-bottom: 1rem;
 }
+
 
 .comments-input {
   column-gap: 1rem;
@@ -56,7 +66,9 @@
   font-size: 1rem;
   background-color: #181822;
   color: white;
-  border: 1px solid white;
+  border: none;
+  padding: 0.5rem;
+  resize: none;
 }
 
 textarea::placeholder {
@@ -79,4 +91,38 @@ textarea::placeholder {
   color: white;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
+}
+
+.comment-author {
+  font-size: 0.8rem;
+  color: #6c6c73;
+  font-family: "JetBrains Mono", monospace;
+  margin-bottom: 0;
+}
+
+.comment-p {
+  color: white;
+  margin-top: 0.25rem;
+}
+
+.comment-button {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: none;
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  padding: 6px 16px;
+  margin-bottom: 1rem;
+}
+
+.comment-button-wrapper {
+  display: flex;
+  justify-content: center;
 }

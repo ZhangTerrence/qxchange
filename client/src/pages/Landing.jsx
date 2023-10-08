@@ -78,7 +78,7 @@ export const Landing = () => {
           className="project-name-child"
           style={{ fontSize: scrollYProgress }}
         />
-        RUddit
+        QuestionXChange
       </motion.div>
       <motion.img
         animate={{
@@ -98,38 +98,16 @@ export const Landing = () => {
         onLoad={attach}
         src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
       />
-      <motion.div
-        animate={fadeControls}
-        className="subjects-body"
-        style={{ opacity: 0 }}
-      >
-        <p>Choose your subject:</p>
-        <div className="row">
-          <div className="column">
-            {subjects.map((subject, i) => {
-              return (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="subject-container"
-                  onClick={() => {
-                    navigate("/dashboard", {
-                      state: { subject: subject.subject },
-                    });
-                  }}
-                >
-                  <motion.img
-                    whileHover={{ scale: 1.5, transition: { duration: 0.3 } }}
-                    src={subject.image}
-                  ></motion.img>
-                  <h1>{subject.subject}</h1>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.div>
+    <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
+            <p >Choose your subject:</p>
+            <div className="row">
+              <div className="column" >
+                {subjects.map((subject, i) => {return <motion.div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
+                  navigate("/dashboard", {state:{subject:subject.subject}})
+                }}><motion.img whileHover={{scale : 1.5, transition: { duration: 0.3 }}} src={subject.image}></motion.img><h1>{subject.subject}</h1></motion.div>})}
+              </div>
+            </div>
+          </motion.div>
     </div>
   );
 };
