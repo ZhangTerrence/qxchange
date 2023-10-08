@@ -1,3 +1,4 @@
+import "../css/Landing.css";
 import { Navbar } from "../components/Navbar.jsx";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
@@ -7,7 +8,6 @@ import {
   useTransform,
   useAnimationControls,
 } from "framer-motion";
-import "../css/Landing.css";
 import { useNavigate } from "react-router-dom";
 
 export const Landing = () => {
@@ -21,7 +21,9 @@ export const Landing = () => {
 
   useEffect(() => {
     async function fetchApi() {
-      const response = await axios.get("http://localhost:6060/api/subject/");
+      const response = await axios.get(
+        "https://hackru-api.onrender.com/api/subject/"
+      );
       setSubjects(response.data.subjects);
     }
     fetchApi();
