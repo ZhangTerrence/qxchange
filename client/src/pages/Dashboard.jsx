@@ -6,7 +6,6 @@ import { Leaderboard } from "../components/Leaderboard";
 import { CreatePost } from "../components/CreatePost";
 import { Navbar } from "../components/Navbar";
 import { useLocation } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export const Dashboard = () => {
   const [posts, setPosts] = useState([]);
@@ -14,7 +13,6 @@ export const Dashboard = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
   const location = useLocation();
-  const { user, loginWithRedirect } = useAuth0();
   const [subject, setNewSubject] = useState("");
 
   useEffect(() => {
@@ -36,25 +34,14 @@ export const Dashboard = () => {
     setNewContent(event.target.value);
   };
 
-  const redirectLogin = async () => {
-    await loginWithRedirect({
-      appState: {
-        returnTo: "/",
-      },
-    });
-  };
-
   const addPost = (event) => {
     event.preventDefault();
 
-    if (!user) {
-      redirectLogin();
-      return;
-    }
+
 
     const postObject = {
       subject: location.state.subject,
-      author: user.name,
+      author: "Anonymous",
       title: newTitle,
       content: newContent,
     };
