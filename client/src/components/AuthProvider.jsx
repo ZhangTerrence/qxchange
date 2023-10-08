@@ -1,30 +1,28 @@
 import { Auth0Provider } from "@auth0/auth0-react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const authDomain = import.meta.env.VITE_AUTH0_DOMAIN;
-  const authClientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-  const authAudience = import.meta.env.VITE_AUTH0_AUDIENCE;
-  const authRedirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
+  const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+  const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+  const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
 
   const onRedirectCallback = (appState) => {
-    navigate(appState.returnTo || window.location.pathname);
+    navigate(appState?.returnTo || window.location.pathname);
   };
 
-  if (!(authDomain && authClientId && authRedirectUri)) {
+  if (!(domain && clientId && redirectUri)) {
     return null;
   }
 
   return (
     <Auth0Provider
-      domain={authDomain}
-      clientId={authClientId}
+      domain={domain}
+      clientId={clientId}
       authorizationParams={{
-        redirect_uri: window.location.origin,
-        audience: authAudience,
+        redirect_uri: redirectUri,
       }}
       onRedirectCallback={onRedirectCallback}
     >
@@ -32,3 +30,4 @@ export const AuthProvider = ({ children }) => {
     </Auth0Provider>
   );
 };
+
