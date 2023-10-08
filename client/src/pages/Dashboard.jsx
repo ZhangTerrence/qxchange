@@ -7,6 +7,9 @@ import { CreatePost } from "../components/CreatePost";
 import { Navbar } from "../components/Navbar";
 import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import OpenAI from "openai";
+import Configuration from "openai";
+import axios from "axios";
 
 export const Dashboard = () => {
   const [posts, setPosts] = useState([]);
@@ -44,6 +47,19 @@ export const Dashboard = () => {
     });
   };
 
+  const openAI = async (subject, content) => {
+    const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const openai = new OpenAI({
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+});
+  const response = await openai.chat.completions.create({
+    messages: [{ role: 'user', content: 'Say this is a test' }],
+    model: 'gpt-3.5-turbo',
+  });
+  console.log(response);
+}
+
   const addPost = (event) => {
     event.preventDefault();
 
@@ -65,6 +81,7 @@ export const Dashboard = () => {
       setNewContent("");
       setOpen(false);
     });
+    openAI(location.state.subject, newContent);
   };
 
   if (!posts) {
