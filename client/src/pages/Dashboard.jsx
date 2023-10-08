@@ -5,17 +5,26 @@ import Service from "../services/post";
 import { Leaderboard } from "../components/Leaderboard";
 import { CreatePost } from "../components/CreatePost";
 import { Navbar } from "../components/Navbar";
+import { useLocation} from "react-router-dom"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Dashboard = () => {
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
+  const location = useLocation();
+  const {user} = useAuth0();
+  const [subject, setNewSubject] = useState("")
 
   useEffect(() => {
-    Service.getAll().then((initialPosts) => {
+    Service.getAll(location.state.subject).then((initialPosts) => {
+      console.log(initialPosts)
       setPosts(initialPosts.posts);
+      setNewSubject(location.state.subject);
+
     });
+    console.log(location.state.subject)
   }, []);
 
   const handleOpen = () => {
@@ -24,26 +33,27 @@ export const Dashboard = () => {
 
   const handleTitleChange = (event) => {
     console.log(event.target.value);
-    console.log("title");
+
     setNewTitle(event.target.value);
   };
 
   const handleContentChange = (event) => {
     console.log(event.target.value);
-    console.log("content");
     setNewContent(event.target.value);
   };
 
   const addPost = (event) => {
     event.preventDefault();
     const postObject = {
-      author: "Evan",
+      subject: location.state.subject,
+      author: user.name,
       title: newTitle,
       content: newContent,
     };
 
     Service.create(postObject).then((returnedObject) => {
-      setPosts(posts.concat(returnedObject));
+      console.log(returnedObject.post)
+      setPosts(posts => [...posts, returnedObject.post]);
       setNewTitle("");
       setNewContent("");
       setOpen(false);
@@ -57,9 +67,9 @@ export const Dashboard = () => {
     <div>
       <Navbar />
       <section className="dashboard-body">
-        {/* nav component goes here */}
         <div className="dashboard-container">
           <div className="left-container">
+            
             <div className="create-container">
               {open ? (
                 <CreatePost
@@ -76,7 +86,7 @@ export const Dashboard = () => {
               )}
             </div>
             {open ? <div className="overlay" onClick={handleOpen} /> : null}
-
+            <h1>{subject}</h1>
             <div className="post-container">
               {posts.map((post) => (
                 <Post post={post} key={post.id} />

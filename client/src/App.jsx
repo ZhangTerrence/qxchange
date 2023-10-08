@@ -11,7 +11,7 @@ export const App = () => {
       <Route path="/" element={<Landing />} />
         <Route
           path="/dashboard"
-          element={<AuthenticationGuard component={Dashboard} />}
+          element={<Dashboard />}
         />
         <Route path ="/callback" element= {<CallBackPage />} />
     </Routes>

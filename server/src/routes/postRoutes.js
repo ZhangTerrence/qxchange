@@ -7,8 +7,7 @@ const {
 
 const postRoutes = express.Router();
 
-postRoutes.get("/:id", getPost);
-postRoutes.get("/", getPosts);
+postRoutes.get("/:id", getPosts);
 postRoutes.post("/", createPost);
 
 module.exports = postRoutes;
