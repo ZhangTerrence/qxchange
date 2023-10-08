@@ -3,7 +3,8 @@
   font-family: "JetBrains Mono", Helvetica;
   position: relative;
   width: 100vw;
-  height: 200vh;
+  min-height: 230vh;
+  overflow: auto;
   align-items: center;
 }
 
@@ -30,7 +31,6 @@
 }
 
 .subjects-body {
-  background-color: #0d0d15;
   font-size: 0.75rem;
   font-family: "JetBrains Mono", monospace;
   color: #ffffff;
