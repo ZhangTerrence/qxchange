@@ -64,8 +64,19 @@
   padding-top: 2rem; 
   padding-bottom: 2rem; 
   position: relative;
+  overflow: hidden;
 }
+
+.subject-container h1 {
+  position: initial;
+  z-index: 5;
+}
+
 .subject-container img {
-    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    top: -76px;
+    left: 0;
+    opacity: 0.25;
 }
 

@@ -108,9 +108,9 @@ export const Landing = () => {
             <p>Choose your subject:</p>
             <div className="row">
               <div className="column" >
-                {subjects.map((subject, i) => {return <div key={i} whilehover={{scale: 1.1}} whiletap={{scale:0.9}} className="subject-container" onClick={()=> {
+                {subjects.map((subject, i) => {return <motion.div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
                   navigate("/dashboard", {state:{subject:subject.subject}})
-                }}>{/** <img src={subject.image}></img>*/}<h1>{subject.subject}</h1></div>})}
+                }}><motion.img whileHover={{scale : 1.5, transition: { duration: 0.3 }}} src={subject.image}></motion.img><h1>{subject.subject}</h1></motion.div>})}
               </div>
             </div>
           </motion.div>
