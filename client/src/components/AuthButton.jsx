@@ -1,9 +1,8 @@
-import '../css/Navbar.css'
+import "../css/Navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
 
 export const AuthButton = () => {
-    const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
     const handleLogin = async () => {
       await loginWithRedirect({
@@ -17,4 +16,3 @@ export const AuthButton = () => {
         <button className="login-button" onClick={handleLogin}>Log in</button>
     )
 }
-

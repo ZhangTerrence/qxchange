@@ -1,20 +1,24 @@
 import { Navbar } from "../components/Navbar.jsx";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { motion, useScroll, useTransform, useAnimationControls} from "framer-motion";
-import "../css/landing.css";
-import {useNavigate} from 'react-router-dom'
-
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useAnimationControls,
+} from "framer-motion";
+import "../css/Landing.css";
+import { useNavigate } from "react-router-dom";
 
 export const Landing = () => {
   const navigate = useNavigate();
 
-  var { scrollYProgress } = useScroll();
+  const [subjects, setSubjects] = useState([]);
+  const { scrollYProgress } = useScroll();
+  const fadeControls = useAnimationControls();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
-  const fadeControls = useAnimationControls();
-  var height = 0;
-  const [subjects, setSubjects] = useState([]);
+
   useEffect(() => {
     async function fetchApi() {
       const response = await axios.get("http://localhost:6060/api/subject/");
@@ -23,42 +27,40 @@ export const Landing = () => {
     fetchApi();
   }, []);
 
+  const handleScroll = useCallback(() => {
+    if (scrollYProgress.current >= 0.4) {
+      fadeControls.start({
+        opacity: 1,
+        transition: { duration: 0.3 },
+      });
+      document.querySelector("img.arrow").style.opacity = 0;
+    } else if (
+      scrollYProgress.current < 0.4 &&
+      scrollYProgress.current > 0.05
+    ) {
+      document.querySelector("img.arrow").style.opacity = 1;
+      fadeControls.start({
+        opacity: 0,
+        transition: { duration: 0.3 },
+      });
+    }
+  }, [fadeControls, scrollYProgress]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
   function attach() {
     document.querySelector("img.arrow").addEventListener("click", () => {
       window.scrollTo({
-        top: 330,
+        top: document.querySelector(".subjects-body").offsetTop - 60,
         behavior: "smooth",
       });
     });
-  }
- 
-  document.addEventListener("scroll", () => {
-    if(scrollYProgress.current >= 0.4) {
-        fadeControls.start({
-          opacity: 1,
-           transition: { duration: 0.3 },
-         })
-      
-      document.querySelector("img.arrow").style.opacity = 0;
-    } else if(scrollYProgress.current < 0.4 && scrollYProgress.current > 0.05) {
-      document.querySelector("img.arrow").style.opacity = 1;
-        fadeControls.start({
-          opacity: 0,
-           transition: { duration: 0.3 },
-         })
-    }
-  })
-
-  const variants = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1, 
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
   }
 
   return (
@@ -67,16 +69,6 @@ export const Landing = () => {
       <motion.div
         layoutScroll
         className="project-name"
-        // animate={{
-        //   rotate: 180
-        // }}
-        // transition={{
-        //   repeat: 1,
-        //   repeatType: "mirror",
-        //   duration: 2,
-        //   type: "keyframes"
-        // }}
-
         style={{ scale, translateY: pos }}
       >
         <motion.div
@@ -84,7 +76,7 @@ export const Landing = () => {
           className="project-name-child"
           style={{ fontSize: scrollYProgress }}
         />
-        HackRU Goated Project
+        RUddit
       </motion.div>
       <motion.img
         animate={{
@@ -105,12 +97,12 @@ export const Landing = () => {
         src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
       />
     <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
-            <h1>Choose your subject:</h1>
+            <p>Choose your subject:</p>
             <div className="row">
               <div className="column" >
-                {subjects.map((subject, i) => {return <div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
+                {subjects.map((subject, i) => {return <motion.div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
                   navigate("/dashboard", {state:{subject:subject.subject}})
-                }}><h1>{subject.subject}</h1></div>})}
+                }}><motion.img whileHover={{scale : 1.5, transition: { duration: 0.3 }}} src={subject.image}></motion.img><h1>{subject.subject}</h1></motion.div>})}
               </div>
             </div>
           </motion.div>

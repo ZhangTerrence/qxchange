@@ -32,6 +32,7 @@ export const Navbar = () => {
           </div>
         </div> 
 
+
         : <AuthButton/>}
 
         {user ? null : <SignupButton/>}

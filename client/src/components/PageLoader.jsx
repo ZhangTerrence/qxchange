@@ -1,6 +1,4 @@
-import React from "react";
-import '../css/Loader.css'
-
+import "../css/Loader.css";
 
 const PageLoader = () => {
   const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";

@@ -1,25 +1,28 @@
 import axios from "axios";
-const baseUrl = "http://localhost:6060/api/post";
 
-const getAll = async (payload) => {
-  const request = await axios.get(`http://localhost:6060/api/post/${payload}`);
-  const data = await request.data;
-  console.log(data);
-  return data;
-};
-
-const create = (newObject) => {
-  const request = axios.post(baseUrl, newObject);
+const getPosts = (subject) => {
+  const request = axios.get(`http://localhost:6060/api/post/${subject}`);
   return request.then((response) => response.data);
 };
 
-const update = (id, newObject) => {
-  const request = axios.put(`${baseUrl}/${id}`, newObject);
+const createPost = (payload) => {
+  const request = axios.post("http://localhost:6060/api/post", payload);
+  return request.then((response) => response.data);
+};
+
+const getComments = (comment) => {
+  const request = axios.get(`http://localhost:6060/api/comment/${comment}`);
+  return request.then((response) => response.data);
+};
+
+const createComment = (payload) => {
+  const request = axios.post("http://localhost:6060/api/comment", payload);
   return request.then((response) => response.data);
 };
 
 export default {
-  getAll: getAll,
-  create: create,
-  update: update,
+  getPosts,
+  createPost,
+  getComments,
+  createComment,
 };
