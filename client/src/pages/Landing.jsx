@@ -60,6 +60,18 @@ export const Landing = () => {
     }
   })
 
+  const variants = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1, 
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+
   return (
     <div className="index">
       <Navbar />
@@ -107,15 +119,15 @@ export const Landing = () => {
             <h1>Choose your subject:</h1>
             <div className="row">
               <div className="column">
-                <div className="subject-container">Math</div>
-                <div className="subject-container">English</div>
-                <div className="subject-container">Chemistry</div>
-                <div className="subject-container">History</div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>Math</motion.div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>English</motion.div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>Chemistry</motion.div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>History</motion.div>
               </div>
               <div className="column">
-                <div className="subject-container">Biology</div>
-                <div className="subject-container">Physics</div>
-                <div className="subject-container">Foreign Languages</div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>Biology</motion.div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>Physics</motion.div>
+                <motion.div className="subject-container" whileHover={{scale: 1.1}} whileTap={{scale:0.9}}>Foreign Languages</motion.div>
               </div>
             </div>
           </motion.div>
