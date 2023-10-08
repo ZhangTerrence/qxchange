@@ -8,7 +8,6 @@ export const Post = ({ post }) => {
   const [comment, setComment] = useState("");
   const [commenting, setCommenting] = useState(false);
   const [comments, setComments] = useState([]);
-  const { user, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     Service.getComments(post._id).then((response) => {
@@ -16,25 +15,14 @@ export const Post = ({ post }) => {
     });
   }, [post]);
 
-  const redirectLogin = async () => {
-    await loginWithRedirect({
-      appState: {
-        returnTo: "/",
-      },
-    });
-  };
 
   const addComment = (e) => {
     e.preventDefault();
 
-    if (!user) {
-      redirectLogin();
-      return;
-    }
 
     const commentObject = {
       post: post._id,
-      author: user.name,
+      author: "Anonymous",
       content: comment,
     };
 
