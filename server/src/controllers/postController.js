@@ -1,15 +1,11 @@
 const { subjectModel, postModel } = require("../models/subjectModel");
-
-const getPost = async (req, res) => {
-  const { id } = req.params;
-
-  const post = await postModel.findOne({ _id: id });
-
-  return res.status(200).json({ post });
-};
-
 const getPosts = async (req, res) => {
   const { id } = req.params;
+
+  if (!id) {
+    res.status(400).json({ error: "Subject is required." });
+    return;
+  }
 
   const posts = await postModel.find({ subject: id }).sort({ createdAt: 1 });
 
@@ -18,7 +14,8 @@ const getPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   const { subject, author, title, content } = req.body;
-  console.log(subject, author, title);
+
+  console.log(title, content);
   const subjectExists = await subjectModel.findOne({ subject });
 
   if (!subjectExists) {
@@ -40,7 +37,6 @@ const createPost = async (req, res) => {
 };
 
 module.exports = {
-  getPost,
   getPosts,
   createPost,
 };

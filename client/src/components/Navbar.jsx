@@ -10,9 +10,8 @@ export const Navbar = () => {
     <div className="navbar">
       <div className="nav-elems">(forum name)</div>
 
-
-       {user ? <LogoutButton /> : null} 
-      {user ? <div className="nav-elems">{user.name}</div> : <AuthButton/>}
+      {user ? <LogoutButton /> : null}
+      {user ? <div className="nav-elems">{user.name}</div> : <AuthButton />}
     </div>
   );
 };
