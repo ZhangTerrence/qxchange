@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../css/Post.css";
 import Service from "../services/post";
 import { useAuth0 } from "@auth0/auth0-react";
+import {AiFillCaretDown} from 'react-icons/ai'
 
 export const Post = ({ post }) => {
   const [comment, setComment] = useState("");
@@ -39,6 +40,7 @@ export const Post = ({ post }) => {
 
     Service.createComment(commentObject).then((response) => {
       setComments((comments) => [...comments, response.comment]);
+      setComment("");
     });
   };
 
@@ -47,24 +49,29 @@ export const Post = ({ post }) => {
       <h3 className="post-author">Posted by {post.author}</h3>
       <h1 className="post-title">{post.title}</h1>
       <p className="post-content">{post.content}</p>
-      <div className="post-comments" onClick={() => setCommenting(!commenting)}>
-        {comments.length} comments
+      <div className="comment-wrapper" onClick={() => setCommenting(!commenting)} >
+      <div className="post-comments"> View {comments.length} Comments </div>
+      <AiFillCaretDown/>
       </div>
+
       {commenting ? (
         <div className="comments">
           <hr className="comments-border" />
           <div className="comments-input">
             <textarea
               placeholder="Comment here..."
+              value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <button onClick={(e) => addComment(e)}>Comment</button>
+          </div>
+          <div className="comment-button-wrapper">
+              <button class="comment-button" onClick={(e) => addComment(e)}>Comment</button>
           </div>
           {comments.map((comment, i) => {
             return (
               <div key={i} className="comment">
-                <p>Commented by {comment.author}</p>
-                <p>{comment.content}</p>
+                <p class="comment-author">Commented by {comment.author}</p>
+                <p class="comment-p">{comment.content}</p>
               </div>
             );
           })}

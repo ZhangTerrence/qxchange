@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0rem;
   position: relative;
   
 }
@@ -91,9 +91,9 @@
   align-items: center;
   justify-content: center;
   background-color: #181822;
-  padding: 0rem 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  padding: 0rem 0.75rem;
 
 }
 
