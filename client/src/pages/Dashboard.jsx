@@ -5,7 +5,7 @@ import Service from "../services/post";
 import { Leaderboard } from "../components/Leaderboard";
 import { CreatePost } from "../components/CreatePost";
 import { Navbar } from "../components/Navbar";
-import { useLocation} from "react-router-dom"
+import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const Dashboard = () => {
@@ -14,32 +14,35 @@ export const Dashboard = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
   const location = useLocation();
-  const {user} = useAuth0();
-  const [subject, setNewSubject] = useState("")
+  const { user } = useAuth0();
+  const [subject, setNewSubject] = useState("");
+  const { loginWithRedirect } = useAuth0();
 
   useEffect(() => {
-    Service.getAll(location.state.subject).then((initialPosts) => {
-      console.log(initialPosts)
+    Service.getPosts(location.state.subject).then((initialPosts) => {
       setPosts(initialPosts.posts);
       setNewSubject(location.state.subject);
-
     });
-    console.log(location.state.subject)
-  }, []);
+  }, [location.state.subject]);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
   const handleTitleChange = (event) => {
-    console.log(event.target.value);
-
     setNewTitle(event.target.value);
   };
 
   const handleContentChange = (event) => {
-    console.log(event.target.value);
     setNewContent(event.target.value);
+  };
+
+  const redirectLogin = async () => {
+    await loginWithRedirect({
+      appState: {
+        returnTo: "/",
+      },
+    });
   };
 
   const addPost = (event) => {
@@ -51,14 +54,19 @@ export const Dashboard = () => {
       content: newContent,
     };
 
-    Service.create(postObject).then((returnedObject) => {
-      console.log(returnedObject.post)
-      setPosts(posts => [...posts, returnedObject.post]);
+    if (!user) {
+      redirectLogin();
+      return;
+    }
+
+    Service.createPost(postObject).then((returnedObject) => {
+      setPosts((posts) => [returnedObject.post, ...posts]);
       setNewTitle("");
       setNewContent("");
       setOpen(false);
     });
   };
+
   if (!posts) {
     return null;
   }
@@ -69,7 +77,6 @@ export const Dashboard = () => {
       <section className="dashboard-body">
         <div className="dashboard-container">
           <div className="left-container">
-            
             <div className="create-container">
               {open ? (
                 <CreatePost
@@ -88,8 +95,8 @@ export const Dashboard = () => {
             {open ? <div className="overlay" onClick={handleOpen} /> : null}
             <h1>{subject}</h1>
             <div className="post-container">
-              {posts.map((post) => (
-                <Post post={post} key={post.id} />
+              {posts.map((post, i) => (
+                <Post key={i} post={post} />
               ))}
             </div>
           </div>
