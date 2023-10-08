@@ -70,6 +70,7 @@ export const Dashboard = () => {
         <div className="dashboard-container">
           <div className="left-container">
             
+          <h1 className="subject-title">Topic: {subject}</h1>
             <div className="create-container">
               {open ? (
                 <CreatePost
@@ -86,7 +87,6 @@ export const Dashboard = () => {
               )}
             </div>
             {open ? <div className="overlay" onClick={handleOpen} /> : null}
-            <h1>{subject}</h1>
             <div className="post-container">
               {posts.map((post) => (
                 <Post post={post} key={post.id} />
