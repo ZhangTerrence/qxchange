@@ -110,7 +110,7 @@ export const Landing = () => {
               <div className="column" >
                 {subjects.map((subject, i) => {return <div key={i} whilehover={{scale: 1.1}} whiletap={{scale:0.9}} className="subject-container" onClick={()=> {
                   navigate("/dashboard", {state:{subject:subject.subject}})
-                }}><h1>{subject.subject}</h1></div>})}
+                }}>{/** <img src={subject.image}></img>*/}<h1>{subject.subject}</h1></div>})}
               </div>
             </div>
           </motion.div>

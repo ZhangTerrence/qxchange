@@ -63,5 +63,9 @@
   font-size: 1rem;
   padding-top: 2rem; 
   padding-bottom: 2rem; 
+  position: relative;
+}
+.subject-container img {
+    overflow: hidden;
 }
 
