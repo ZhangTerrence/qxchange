@@ -84,7 +84,7 @@ export const Landing = () => {
           className="project-name-child"
           style={{ fontSize: scrollYProgress }}
         />
-        HackRU Goated Project
+        RUddit
       </motion.div>
       <motion.img
         animate={{
@@ -105,10 +105,10 @@ export const Landing = () => {
         src="https://cdn.animaapp.com/projects/65217f2625a5f136eb81c527/releases/65217fdf819c5f5f1d286d06/img/arrow-1-1@2x.png"
       />
     <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
-            <h1>Choose your subject:</h1>
+            <p>Choose your subject:</p>
             <div className="row">
               <div className="column" >
-                {subjects.map((subject, i) => {return <div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
+                {subjects.map((subject, i) => {return <div key={i} whilehover={{scale: 1.1}} whiletap={{scale:0.9}} className="subject-container" onClick={()=> {
                   navigate("/dashboard", {state:{subject:subject.subject}})
                 }}><h1>{subject.subject}</h1></div>})}
               </div>
