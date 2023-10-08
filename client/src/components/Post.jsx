@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import "../css/Post.css";
+import { useEffect, useState } from "react";
 import Service from "../services/post";
 import { useAuth0 } from "@auth0/auth0-react";
 
