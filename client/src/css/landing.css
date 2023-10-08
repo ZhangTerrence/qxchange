@@ -62,8 +62,8 @@
   text-align: center;
   line-height: 50px;
   font-size: 1rem;
-  padding-top: 2rem; 
-  padding-bottom: 2rem; 
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -74,8 +74,9 @@
 }
 
 .subject-container img {
-    width: 100%;
-    position: absolute;
-    top: -76px;
-    left: 0;
-    opacity: 0.25;
+  width: 100%;
+  position: absolute;
+  top: -76px;
+  left: 0;
+  opacity: 0.25;
+}

@@ -93,7 +93,7 @@ export const Dashboard = () => {
               )}
             </div>
             {open ? <div className="overlay" onClick={handleOpen} /> : null}
-            <h1>{subject}</h1>
+            <h1 className="subject">{subject}</h1>
             <div className="post-container">
               {posts.map((post, i) => (
                 <Post key={i} post={post} />
