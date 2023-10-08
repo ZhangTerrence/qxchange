@@ -7,7 +7,7 @@ const getPosts = async (req, res) => {
     return;
   }
 
-  const posts = await postModel.find({ subject: id }).sort({ createdAt: 1 });
+  const posts = await postModel.find({ subject: id }).sort({ createdAt: -1 });
 
   return res.status(200).json({ posts });
 };

@@ -14,9 +14,8 @@ export const Dashboard = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
   const location = useLocation();
-  const { user } = useAuth0();
+  const { user, loginWithRedirect } = useAuth0();
   const [subject, setNewSubject] = useState("");
-  const { loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     Service.getPosts(location.state.subject).then((initialPosts) => {
@@ -47,6 +46,12 @@ export const Dashboard = () => {
 
   const addPost = (event) => {
     event.preventDefault();
+
+    if (!user) {
+      redirectLogin();
+      return;
+    }
+
     const postObject = {
       subject: location.state.subject,
       author: user.name,
@@ -54,13 +59,8 @@ export const Dashboard = () => {
       content: newContent,
     };
 
-    if (!user) {
-      redirectLogin();
-      return;
-    }
-
-    Service.createPost(postObject).then((returnedObject) => {
-      setPosts((posts) => [returnedObject.post, ...posts]);
+    Service.createPost(postObject).then((response) => {
+      setPosts((posts) => [response.post, ...posts]);
       setNewTitle("");
       setNewContent("");
       setOpen(false);
