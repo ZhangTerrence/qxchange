@@ -3,25 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, useScroll, useTransform, useAnimationControls} from "framer-motion";
 import "../css/landing.css";
+import {useNavigate} from 'react-router-dom'
+
 
 export const Landing = () => {
-  // var fontString = document.querySelector("div.project-name").style.fontSize;
-  // let fontS = parseInt(fontString);
-  // var prevScrollPos = 0;
-
-  // document.addEventListener("scroll", (scroll) => {
-  //   // console.log(window.scrollY);
-  //   var fontS = parseInt(document.querySelector("div.project-name").style.fontSize)
-  //   if(window.scrollY > prevScrollPos) {
-  //     fontS = fontS - (window.scrollY - prevScrollPos)/10;
-  //   } else {
-  //     fontS = fontS + (prevScrollPos - window.scrollY)/10;
-  //   }
-  //   document.querySelector("div.project-name").style.fontSize = fontS + "px";
-  //   prevScrollPos = window.scrollY;
-  //   console.log(window.scrollY)
-
-  // })
+  const navigate = useNavigate();
 
   var { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
@@ -31,8 +17,7 @@ export const Landing = () => {
   const [subjects, setSubjects] = useState([]);
   useEffect(() => {
     async function fetchApi() {
-      const response = await axios.get("http://localhost:4000/api/subject/");
-      console.log(response.data.subjects);
+      const response = await axios.get("http://localhost:6060/api/subject/");
       setSubjects(response.data.subjects);
     }
     fetchApi();
@@ -48,7 +33,6 @@ export const Landing = () => {
   }
  
   document.addEventListener("scroll", () => {
-    console.log(scrollYProgress.current)
     if(scrollYProgress.current >= 0.4) {
         fadeControls.start({
           opacity: 1,
@@ -124,7 +108,9 @@ export const Landing = () => {
             <h1>Choose your subject:</h1>
             <div className="row">
               <div className="column" >
-                {subjects.map((subject, i) => {return <div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container"><h1>{subject.subject}</h1></div>})}
+                {subjects.map((subject, i) => {return <div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container" onClick={()=> {
+                  navigate("/dashboard", {state:{subject:subject.subject}})
+                }}><h1>{subject.subject}</h1></div>})}
               </div>
             </div>
           </motion.div>

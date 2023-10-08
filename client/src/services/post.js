@@ -1,9 +1,11 @@
 import axios from "axios";
-const baseUrl = "http://localhost:4000/api/post";
+const baseUrl = "http://localhost:6060/api/post";
 
-const getAll = () => {
-  const request = axios.get(baseUrl);
-  return request.then((response) => response.data);
+const getAll = async (payload) => {
+  const request = await axios.get(`http://localhost:6060/api/post/${payload}`);
+  const data = await request.data;
+  console.log(data);
+  return data;
 };
 
 const create = (newObject) => {

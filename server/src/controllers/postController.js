@@ -9,14 +9,16 @@ const getPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
-  const posts = await postModel.find({}).sort({ createdAt: 1 });
+  const { id } = req.params;
+
+  const posts = await postModel.find({ subject: id }).sort({ createdAt: 1 });
 
   return res.status(200).json({ posts });
 };
 
 const createPost = async (req, res) => {
   const { subject, author, title, content } = req.body;
-
+  console.log(subject, author, title);
   const subjectExists = await subjectModel.findOne({ subject });
 
   if (!subjectExists) {
