@@ -5,8 +5,8 @@ const getPosts = (subject) => {
   return request.then((response) => response.data);
 };
 
-const createPost = (newObject) => {
-  const request = axios.post("http://localhost:6060/api/post", newObject);
+const createPost = (payload) => {
+  const request = axios.post("http://localhost:6060/api/post", payload);
   return request.then((response) => response.data);
 };
 
@@ -15,8 +15,14 @@ const getComments = (comment) => {
   return request.then((response) => response.data);
 };
 
+const createComment = (payload) => {
+  const request = axios.post("http://localhost:6060/api/comment", payload);
+  return request.then((response) => response.data);
+};
+
 export default {
   getPosts,
   createPost,
   getComments,
+  createComment,
 };
