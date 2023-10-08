@@ -1,4 +1,6 @@
 import { Navbar } from "../components/Navbar.jsx";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { motion, useScroll, useTransform, useAnimationControls} from "framer-motion";
 import "../css/landing.css";
 
@@ -25,19 +27,21 @@ export const Landing = () => {
   const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.25]);
   const pos = useTransform(scrollYProgress, [0, 1], [0, -500]);
   const fadeControls = useAnimationControls();
-
-  // useEffect(() => {
-  //   async function fetchApi() {
-  //     const response = await axios.get("http://localhost:4000/api/subject/");
-  //     console.log(response.data.subjects);
-  //   }
-  //   fetchApi();
-  // }, []);
+  var height = 0;
+  const [subjects, setSubjects] = useState([]);
+  useEffect(() => {
+    async function fetchApi() {
+      const response = await axios.get("http://localhost:4000/api/subject/");
+      console.log(response.data.subjects);
+      setSubjects(response.data.subjects);
+    }
+    fetchApi();
+  }, []);
 
   function attach() {
     document.querySelector("img.arrow").addEventListener("click", () => {
       window.scrollTo({
-        top: 315,
+        top: 330,
         behavior: "smooth",
       });
     });
@@ -46,17 +50,18 @@ export const Landing = () => {
   document.addEventListener("scroll", () => {
     console.log(scrollYProgress.current)
     if(scrollYProgress.current >= 0.4) {
-      fadeControls.start({
-       opacity: 1,
-        transition: { duration: 0.3 },
-      })
+        fadeControls.start({
+          opacity: 1,
+           transition: { duration: 0.3 },
+         })
+      
       document.querySelector("img.arrow").style.opacity = 0;
-    } else {
+    } else if(scrollYProgress.current < 0.4 && scrollYProgress.current > 0.05) {
       document.querySelector("img.arrow").style.opacity = 1;
-      fadeControls.start({
-        opacity: 0,
-        transition: { duration: 0.3 },
-      })
+        fadeControls.start({
+          opacity: 0,
+           transition: { duration: 0.3 },
+         })
     }
   })
 
@@ -106,16 +111,8 @@ export const Landing = () => {
     <motion.div animate={fadeControls} className="subjects-body" style={ {opacity: 0}}>
             <h1>Choose your subject:</h1>
             <div className="row">
-              <div className="column">
-                <div className="subject-container">Math</div>
-                <div className="subject-container">English</div>
-                <div className="subject-container">Chemistry</div>
-                <div className="subject-container">History</div>
-              </div>
-              <div className="column">
-                <div className="subject-container">Biology</div>
-                <div className="subject-container">Physics</div>
-                <div className="subject-container">Foreign Languages</div>
+              <div className="column" >
+                {subjects.map((subject, i) => {return <div key={i} className="subject-container"><h1>{subject.subject}</h1></div>})}
               </div>
             </div>
           </motion.div>
