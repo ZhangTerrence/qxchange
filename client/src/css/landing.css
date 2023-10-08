@@ -62,9 +62,20 @@
   text-align: center;
   line-height: 50px;
   font-size: 1rem;
-  padding: 2rem 0 2rem 0;
+  padding-top: 2rem; 
+  padding-bottom: 2rem; 
+  position: relative;
+  overflow: hidden;
 }
 
-.subject-container:hover {
-  scale: 110%;
+.subject-container h1 {
+  position: initial;
+  z-index: 5;
 }
+
+.subject-container img {
+    width: 100%;
+    position: absolute;
+    top: -76px;
+    left: 0;
+    opacity: 0.25;
