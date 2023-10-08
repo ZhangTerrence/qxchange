@@ -21,7 +21,9 @@ export const Landing = () => {
 
   useEffect(() => {
     async function fetchApi() {
-      const response = await axios.get("http://localhost:6060/api/subject/");
+      const response = await axios.get(
+        "https://hackru-api.onrender.com/api/subject/"
+      );
       setSubjects(response.data.subjects);
     }
     fetchApi();

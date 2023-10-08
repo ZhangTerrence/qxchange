@@ -1,22 +1,32 @@
 import axios from "axios";
 
 const getPosts = (subject) => {
-  const request = axios.get(`http://localhost:6060/api/post/${subject}`);
+  const request = axios.get(
+    `https://hackru-api.onrender.com/api/post/${subject}`
+  );
   return request.then((response) => response.data);
 };
 
 const createPost = (payload) => {
-  const request = axios.post("http://localhost:6060/api/post", payload);
+  const request = axios.post(
+    "https://hackru-api.onrender.com/api/post",
+    payload
+  );
   return request.then((response) => response.data);
 };
 
 const getComments = (comment) => {
-  const request = axios.get(`http://localhost:6060/api/comment/${comment}`);
+  const request = axios.get(
+    `https://hackru-api.onrender.com/api/comment/${comment}`
+  );
   return request.then((response) => response.data);
 };
 
 const createComment = (payload) => {
-  const request = axios.post("http://localhost:6060/api/comment", payload);
+  const request = axios.post(
+    "https://hackru-api.onrender.com/api/comment",
+    payload
+  );
   return request.then((response) => response.data);
 };
 
