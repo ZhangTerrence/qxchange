@@ -19,7 +19,7 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/" style={{textDecoration: "none"}}>
-          <div className="nav-elems">(forum name)</div>
+          <div className="nav-elems">QXChange</div>
       </Link>
 
       <div className="nav-button-wrapper">
