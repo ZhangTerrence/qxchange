@@ -30,7 +30,8 @@
   }
 
 .subjects-body {
-  background-color: #1e1e1e;
+  background-color: #0d0d15;
+  font-size: 0.75rem;
   font-family: "JetBrains Mono", monospace;
   color: #ffffff;
   text-align: center;
@@ -53,11 +54,14 @@
 }
 
 .subject-container {
-  background-color: #0d0d15;
+  background-color: #181822;
+  border-radius: 10px;
   width: 90%;
   margin: 1rem;
   text-align: center;
   line-height: 50px;
   font-size: 1.5rem;
+  padding-top: 2rem; 
+  padding-bottom: 2rem; 
 }
 

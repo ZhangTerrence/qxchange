@@ -65,6 +65,18 @@ export const Landing = () => {
     }
   })
 
+  const variants = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1, 
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+
   return (
     <div className="index">
       <Navbar />
@@ -112,7 +124,7 @@ export const Landing = () => {
             <h1>Choose your subject:</h1>
             <div className="row">
               <div className="column" >
-                {subjects.map((subject, i) => {return <div key={i} className="subject-container"><h1>{subject.subject}</h1></div>})}
+                {subjects.map((subject, i) => {return <div key={i} whileHover={{scale: 1.1}} whileTap={{scale:0.9}} className="subject-container"><h1>{subject.subject}</h1></div>})}
               </div>
             </div>
           </motion.div>
