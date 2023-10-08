@@ -4,23 +4,15 @@ const {
   subjectModel,
 } = require("../models/subjectModel");
 
-const getComment = async (req, res) => {
+const getComments = async (req, res) => {
   const { id } = req.params;
 
-  const comment = await commentModel.findOne({ _id: id });
-
-  return res.status(200).json({ comment });
-};
-
-const getComments = async (req, res) => {
-  const { post } = req.body;
-
-  if (!post) {
+  if (!id) {
     res.status(400).json({ error: "Post is required." });
     return;
   }
 
-  const comments = await commentModel.find({ post }).sort({ createdAt: 1 });
+  const comments = await commentModel.find({ post: id }).sort({ createdAt: 1 });
 
   res.status(200).json({ comments });
 };
@@ -54,7 +46,6 @@ const createComment = async (req, res) => {
 };
 
 module.exports = {
-  getComment,
   getComments,
   createComment,
 };
