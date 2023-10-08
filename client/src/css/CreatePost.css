@@ -45,7 +45,7 @@ input::placeholder {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
   color: white;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .content-wrapper {
