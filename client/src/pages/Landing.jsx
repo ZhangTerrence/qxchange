@@ -57,7 +57,7 @@ export const Landing = () => {
   function attach() {
     document.querySelector("img.arrow").addEventListener("click", () => {
       window.scrollTo({
-        top: 330,
+        top: document.querySelector(".subjects-body").offsetTop - 60,
         behavior: "smooth",
       });
     });
