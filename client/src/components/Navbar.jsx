@@ -17,9 +17,8 @@ export const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/" style={{textDecoration: "none"}}>
-          <div className="nav-elems">QXChange</div>
-
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div className="nav-elems">QXChange</div>
       </Link>
 
       <div className="nav-button-wrapper">
